@@ -8,6 +8,8 @@ fetch("http://swapi.dev/api/starships/", {
   })
   .then((body) => {
     console.log(body);
+  }).catch((err) => {
+    // Error handling
   });
 
 // Deteniendo ejecución
