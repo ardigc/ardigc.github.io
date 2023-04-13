@@ -34,7 +34,7 @@ function createShip(ship) {
   const modelBox = createElement("div", "model-box", "Modelo: "+ship.model)
   const classBox = createElement("div", "class-box", "Clase: "+ship.starship_class)
   const shipBox = createElement("div", "ship-box",)
-  const velocityBox = createElement("div", "velocity-box", ship.MGLT)
+  const velocityBox = createElement("div", "velocity-box", "velocity: "+ship.MGLT+"MGLT")
   shipBox.append(nameBox)
   shipBox.append(modelBox)
   shipBox.append(velocityBox)
