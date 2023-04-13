@@ -1,6 +1,6 @@
 // Con event loop
 
-fetch("http://swapi.dev/api/starships/", {
+fetch("https://swapi.dev/api/starships/", {
   method: "GET",
 })
 .then((res) => {
