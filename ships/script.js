@@ -1,5 +1,9 @@
-// Con event loop
+const search = new URLSearchParams(window.location.search);
+const url = window.location.href
+console.log(window.location.href);
+window.location.assign(window.location.href+"1/")
 
+// Con event loop
 fetch("https://swapi.dev/api/starships/", {
   method: "GET",
 })
@@ -15,7 +19,6 @@ fetch("https://swapi.dev/api/starships/", {
     const ships = results.map(createShip)
     gridShips.append(...ships);
   })  ;
-  
   // Deteniendo ejecución
   // async function getLuke() {
     //   const response = await fetch("http://swapi.dev/api/people/1/", {
@@ -30,6 +33,7 @@ fetch("https://swapi.dev/api/starships/", {
         // }
         // main()
 function createShip(ship) {
+  const contCicles = 0;
   const nameBox =createElement("div", "name-box", ship.name)
   const modelBox = createElement("div", "model-box", "Modelo: "+ship.model)
   const classBox = createElement("div", "class-box", "Clase: "+ship.starship_class)
@@ -39,8 +43,12 @@ function createShip(ship) {
   shipBox.append(modelBox)
   shipBox.append(velocityBox)
   shipBox.append(classBox)
+  // shipBox.onClick = clickShip();
   return shipBox;
 }
+// function clickShip(){
+//   window.location.assign("1");
+// }
 function createElement(tag, styles, content) {
   const element = document.createElement(tag);
   element.setAttribute("class", styles);
