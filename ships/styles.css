@@ -31,6 +31,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.grid-ship{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+}
 .ship-box{
     display: grid;
     grid-template-areas: "name name name"

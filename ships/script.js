@@ -1,9 +1,9 @@
 const search = new URLSearchParams(window.location.search);
-const url = window.location.href
-console.log(window.location.href);
-window.location.assign(window.location.href+"1/")
-
-// Con event loop
+// const url = window.location.href
+const id= search.get("id");
+console.log(id)
+if (!id === !null) {
+      // Con event loop
 fetch("https://swapi.dev/api/starships/", {
   method: "GET",
 })
@@ -14,7 +14,7 @@ fetch("https://swapi.dev/api/starships/", {
   // }).catch((err) => {
     // Error handling
   }).then((results) => {
-    console.log(results);
+    // console.log(results);
     const gridShips = document.querySelector(".grid-ships")
     const ships = results.map(createShip)
     gridShips.append(...ships);
@@ -33,7 +33,6 @@ fetch("https://swapi.dev/api/starships/", {
         // }
         // main()
 function createShip(ship) {
-  const contCicles = 0;
   const nameBox =createElement("div", "name-box", ship.name)
   const modelBox = createElement("div", "model-box", "Modelo: "+ship.model)
   const classBox = createElement("div", "class-box", "Clase: "+ship.starship_class)
@@ -43,12 +42,49 @@ function createShip(ship) {
   shipBox.append(modelBox)
   shipBox.append(velocityBox)
   shipBox.append(classBox)
-  // shipBox.onClick = clickShip();
+  const ident = ship.url;
+  var regex = /(\d+)/g;
+  const ide = ident.match(regex);
+  console.log(ide);
+  // const ide = ident.slice(-2,-1);
+  // console.log(ide);
+  shipBox.addEventListener("click", (ev) => {
+    window.location.assign(window.location.href+"?id="+ide)
+  });
   return shipBox;
 }
-// function clickShip(){
-//   window.location.assign("1");
-// }
+
+} else {
+  fetch("https://swapi.dev/api/starships/"+id, {
+    method: "GET",
+  })
+  .then((res) => {
+    return res.json();
+  }).then((body) => {
+    console.log(body);
+    const gridShips = document.querySelector(".grid-ships")
+    gridShips.setAttribute("class", "grid-ship")
+    const ships = createShip(body);
+    gridShips.append(ships);
+    function createShip(ship) {
+      const nameBox =createElement("div", "name-box", ship.name)
+      const modelBox = createElement("div", "model-box", "Modelo: "+ship.model)
+      const classBox = createElement("div", "class-box", "Clase: "+ship.starship_class)
+      const shipBox = createElement("div", "ship-box",)
+      const velocityBox = createElement("div", "velocity-box", "velocity: "+ship.MGLT+"MGLT")
+      shipBox.append(nameBox)
+      shipBox.append(modelBox)
+      shipBox.append(velocityBox)
+      shipBox.append(classBox)
+      return shipBox;
+    }
+
+  })
+}
+    // }).catch((err) => {
+      // Error handling
+  
+
 function createElement(tag, styles, content) {
   const element = document.createElement(tag);
   element.setAttribute("class", styles);
@@ -61,4 +97,6 @@ function createElement(tag, styles, content) {
     }
   }
   return element;
-}
+};
+
+// window.location.assign(window.location.href+"?id="+id);
