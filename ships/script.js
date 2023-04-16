@@ -37,17 +37,21 @@ function createShip(ship) {
   const modelBox = createElement("div", "model-box", "Modelo: "+ship.model)
   const classBox = createElement("div", "class-box", "Clase: "+ship.starship_class)
   const shipBox = createElement("div", "ship-box",)
-  const velocityBox = createElement("div", "velocity-box", "velocity: "+ship.MGLT+"MGLT")
-  shipBox.append(nameBox)
-  shipBox.append(modelBox)
-  shipBox.append(velocityBox)
-  shipBox.append(classBox)
+  const velocityBox = createElement("div", "velocity-box", "Velocidad: "+ship.MGLT+"MGLT")
+  const consumibleBox = createElement("div", "velocity-box", "Consumibles: "+ ship.consumables)
+  const passengersBox = createElement("div", "velocity-box", "Pasajeros:  "+ ship.passengers  )
+  shipBox.append(nameBox);
+  shipBox.append(modelBox);
+  shipBox.append(classBox);
+  shipBox.append(velocityBox);
+  shipBox.append(consumibleBox);
+  shipBox.append(passengersBox);
   const ident = ship.url;
   var regex = /(\d+)/g;
   const ide = ident.match(regex);
-  console.log(ide);
-  // const ide = ident.slice(-2,-1);
   // console.log(ide);
+  // const ide = ident.slice(-2,-1);
+  console.log(ship);
   shipBox.addEventListener("click", (ev) => {
     window.location.assign(window.location.href+"?id="+ide)
   });
@@ -72,28 +76,32 @@ function createShip(ship) {
       const classBox = createElement("div", "class-box", "Clase: "+ship.starship_class)
       const shipBox = createElement("div", "ship-box",)
       const velocityBox = createElement("div", "velocity-box", "velocity: "+ship.MGLT+"MGLT")
+      const consumibleBox = createElement("div", "velocity-box", "Consumibles: "+ ship.consumables)
+      const passengersBox = createElement("div", "velocity-box", "Pasajeros:  "+ ship.passengers  )
       shipBox.append(nameBox)
       shipBox.append(modelBox)
-      shipBox.append(velocityBox)
       shipBox.append(classBox)
+      shipBox.append(velocityBox)
+      shipBox.append(consumibleBox);
+      shipBox.append(passengersBox);
       return shipBox;
     }
-
+    
   })
 }
-    // }).catch((err) => {
-      // Error handling
+// }).catch((err) => {
+  // Error handling
   
-
-function createElement(tag, styles, content) {
-  const element = document.createElement(tag);
-  element.setAttribute("class", styles);
-  if (!!content === false) {
-  } else {
-    if (Array.isArray(content)) {
-      element.append(...content);
+  
+  function createElement(tag, styles, content) {
+    const element = document.createElement(tag);
+    element.setAttribute("class", styles);
+    if (!!content === false) {
     } else {
-      element.append(content);
+      if (Array.isArray(content)) {
+        element.append(...content);
+      } else {
+        element.append(content);
     }
   }
   return element;

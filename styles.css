@@ -44,6 +44,9 @@ body{
     /* min-height: 13.5rem; */
     border: solid 1px black;
 }
+.category-box:hover{
+    background-color: #00000086;
+}
 .link{
     text-decoration: none;
     color: #c8c8c8;

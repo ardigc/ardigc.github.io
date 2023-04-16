@@ -18,6 +18,9 @@
 .main{
     margin-top: 10rem;
 }
+body{
+    background-color: #16191b;  
+}
 .intro{
     display: flex; 
     align-items: center;
@@ -42,11 +45,12 @@
                         
     ;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 4rem repeat(6, 2rem);
+    grid-template-rows: 4rem repeat(6, 2.5rem);
     border: solid 1px black;
     background-color: #202327;
     color: #c8c8c8;
 }
+
 .name-box{
     grid-area: name;
     display: flex;
@@ -60,6 +64,7 @@
     align-items: center;
     justify-content: center;
     padding: 8px;
+    text-align: center;
 }
 
 .class-box{
@@ -67,12 +72,14 @@
     align-items: center;
     justify-content: center;
     padding: 8px;
+    text-align: center;
 }
 .velocity-box{
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 8px;
+    text-align: center;
 }
 .sub-box{
     display: flex;
