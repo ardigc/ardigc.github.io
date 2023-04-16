@@ -39,13 +39,15 @@ function createShip(ship) {
   const shipBox = createElement("div", "ship-box",)
   const velocityBox = createElement("div", "velocity-box", "Velocidad: "+ship.MGLT+"MGLT")
   const consumibleBox = createElement("div", "velocity-box", "Consumibles: "+ ship.consumables)
-  const passengersBox = createElement("div", "velocity-box", "Pasajeros:  "+ ship.passengers  )
+  const passengersBox = createElement("div", "velocity-box", "Pasajeros:  "+ ship.passengers)
+  const manufacturerBox = createElement("div", "velocity-box", "Fabricante:  "+ ship.manufacturer)
   shipBox.append(nameBox);
   shipBox.append(modelBox);
   shipBox.append(classBox);
   shipBox.append(velocityBox);
   shipBox.append(consumibleBox);
   shipBox.append(passengersBox);
+  shipBox.append(manufacturerBox);
   const ident = ship.url;
   var regex = /(\d+)/g;
   const ide = ident.match(regex);
@@ -71,19 +73,21 @@ function createShip(ship) {
     const ships = createShip(body);
     gridShips.append(ships);
     function createShip(ship) {
+      const shipBox = createElement("div", "ship-box-big",)
       const nameBox =createElement("div", "name-box", ship.name)
       const modelBox = createElement("div", "model-box", "Modelo: "+ship.model)
       const classBox = createElement("div", "class-box", "Clase: "+ship.starship_class)
-      const shipBox = createElement("div", "ship-box",)
       const velocityBox = createElement("div", "velocity-box", "velocity: "+ship.MGLT+"MGLT")
       const consumibleBox = createElement("div", "velocity-box", "Consumibles: "+ ship.consumables)
       const passengersBox = createElement("div", "velocity-box", "Pasajeros:  "+ ship.passengers  )
+      const manufacturerBox = createElement("div", "velocity-box", "Fabricante:  "+ ship.manufacturer)
       shipBox.append(nameBox)
       shipBox.append(modelBox)
       shipBox.append(classBox)
       shipBox.append(velocityBox)
       shipBox.append(consumibleBox);
       shipBox.append(passengersBox);
+      shipBox.append(manufacturerBox);
       return shipBox;
     }
     

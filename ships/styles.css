@@ -45,11 +45,27 @@ body{
                         
     ;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 4rem repeat(6, 3rem);
+    border: solid 1px black;
+    background-color: #202327;
+    color: #c8c8c8;
+}
+.ship-box:hover{
+    background-color: #181a1d;
+
+}
+.ship-box-big{
+    display: grid;
+    grid-template-areas: "name name name"
+                        
+    ;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 4rem repeat(6, 2.5rem);
     border: solid 1px black;
     background-color: #202327;
     color: #c8c8c8;
 }
+
 
 .name-box{
     grid-area: name;
@@ -58,6 +74,10 @@ body{
     align-items: center;
     background-color: #16191b;
     padding: 5px 0;
+}
+.ship-box:hover .name-box{
+    background-color: #121213;
+
 }
 .model-box{
     display: flex;
