@@ -80,10 +80,10 @@ function createperson(person) {
     const massBox =createElement("div", "item-box", "Peso: "+person.mass+" Kg")
     const shipUrlLink = person.starships.map(linkUrl);
     const finalLink = shipUrlLink.map(linkPerson)
-    console.log(finalLink)
+    // console.log(person.starships)
     // Crear sub caja con los dos enalces
-    const shipBox =createElement("div", "item-box",)
-    const subShipBox = createElement()
+    const shipBox = createShipBox(finalLink, person.starships);
+    // const subShipBox = createElement()
     personBox.append(nameBox);
     personBox.append(eyeBox);
     personBox.append(genderBox);
@@ -97,7 +97,35 @@ function createperson(person) {
 }
 // }).catch((err) => {
   // Error handling
-  
+
+  function createShipBox(link, swapi) {
+//  console.log(link.length);
+    if (link.length === 0) {
+      const shipBox=createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Naves pilotadas: 0")
+      shipBox.append(textBox);
+      return shipBox;
+    } else {
+      const shipBox=createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Naves pilotadas: ")
+      console.log(link)
+      const shipList = link.map(createShipList);
+      shipBox.append(textBox);
+      shipBox.append(shipList);
+      return shipBox;
+    }
+  }
+  function createShipList(link) {
+    console.log(link)
+    fetch(swapi, {
+    method: "GET",
+  })
+  .then((res) => {
+    return res.json();
+  }).then((name) => {
+  // const ship = createElement("a", "item-box", name.name)
+  })
+  }
   function linkUrl(url) {
     // console.log(url);
     var regex = /(\d+)/g;
@@ -108,7 +136,8 @@ function createperson(person) {
   }
   function linkPerson(num) {
     const link =window.location.origin+"/ships/?id="+num;
-    console.log(link);
+    // console.log(link);
+    return link
     
   }
   function createElement(tag, styles, content) {
