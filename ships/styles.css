@@ -60,7 +60,7 @@ body{
                         
     ;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 4rem repeat(6, 2.5rem);
+    grid-template-rows: 4rem repeat(6, 5rem);
     border: solid 1px black;
     background-color: #202327;
     color: #c8c8c8;
@@ -103,4 +103,15 @@ body{
 }
 .sub-box{
     display: flex;
+}
+.item-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    text-align: center;
+}
+.link-box{
+    text-decoration: none;
+    color: #c8c8c8;
 }

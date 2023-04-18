@@ -77,10 +77,13 @@ function createShip(ship) {
       const nameBox =createElement("div", "name-box", ship.name)
       const modelBox = createElement("div", "model-box", "Modelo: "+ship.model)
       const classBox = createElement("div", "class-box", "Clase: "+ship.starship_class)
-      const velocityBox = createElement("div", "velocity-box", "velocity: "+ship.MGLT+"MGLT")
+      const velocityBox = createElement("div", "velocity-box", "Velocidad: "+ship.MGLT+"MGLT")
       const consumibleBox = createElement("div", "velocity-box", "Consumibles: "+ ship.consumables)
       const passengersBox = createElement("div", "velocity-box", "Pasajeros:  "+ ship.passengers  )
       const manufacturerBox = createElement("div", "velocity-box", "Fabricante:  "+ ship.manufacturer)
+      const filmBox = createFilmBox(ship.films);
+      // const vehiclesBox = createVehiclesBox(ship.vehicles);
+      // const planetBox = createPlanetBox(ship.homeworld);
       shipBox.append(nameBox)
       shipBox.append(modelBox)
       shipBox.append(classBox)
@@ -88,6 +91,9 @@ function createShip(ship) {
       shipBox.append(consumibleBox);
       shipBox.append(passengersBox);
       shipBox.append(manufacturerBox);
+      shipBox.append(filmBox);
+      // shipBox.append(vehiclesBox);
+      // shipBox.append(planetBox);
       return shipBox;
     }
     
