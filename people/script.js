@@ -1,10 +1,8 @@
 const search = new URLSearchParams(window.location.search);
 // const url = window.location.href
 const id = search.get("id");
-const intro =document.querySelector(".intro");
-intro.addEventListener("click", (ev) => {
-  window.location.assign(window.location.origin+window.location.pathname)
-});
+
+
 if (!id === !null) {
   // Con event loop
   fetch("https://swapi.dev/api/people/", {
@@ -89,6 +87,7 @@ if (!id === !null) {
         const filmBox = createFilmBox(person.films);
         const vehiclesBox = createVehiclesBox(person.vehicles);
         const planetBox = createPlanetBox(person.homeworld);
+        const speciesBox = createSpeciesBox(person.species);
         personBox.append(nameBox);
         personBox.append(eyeBox);
         personBox.append(genderBox);
@@ -101,6 +100,7 @@ if (!id === !null) {
         personBox.append(vehiclesBox);
         personBox.append(planetBox);
         personBox.append(birthBox);
+        personBox.append(speciesBox);
         return personBox;
       }
 

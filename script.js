@@ -1,3 +1,11 @@
+const intro =document.querySelector(".intro");
+intro.addEventListener("click", (ev) => {
+  window.location.assign(window.location.origin+window.location.pathname)
+});
+const header=document.querySelector(".header");
+header.addEventListener("click", (ev) => {
+  window.location.assign(window.location.origin);
+})
 function linkUrl(url) {
     var regex = /(\d+)/g;
     const ide = url.match(regex);
@@ -11,6 +19,15 @@ function linkUrl(url) {
     const link = window.location.origin + "/films/?id=" + num;
     return link
   }
+  function linkPilot(num) {
+    const link = window.location.origin + "/people/?id=" + num;
+    return link
+  }
+  function linkSpecies(num) {
+    const link = window.location.origin + "/species/?id=" + num;
+    return link
+  }
+
   function linkVehicles(num) {
     const link = window.location.origin + "/vehicles/?id=" + num;
     return link
@@ -51,6 +68,70 @@ function linkUrl(url) {
       return filmBox;
     }
   }
+  function createPilotBox(link) {
+    if (link.length === 0) {
+      const pilotBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Sin pilotos conocidos")
+      pilotBox.append(textBox);
+      return pilotBox;
+    } else {
+      const pilotBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Pilotos conocidos: ")
+      // console.log(link)
+      const pilotList = link.map(createPilotList);
+      pilotBox.append(textBox);
+      pilotBox.append(...pilotList);
+      return pilotBox;
+    }
+  }
+  function createPeopleBox(link) {
+    if (link.length === 0) {
+      const pilotBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Sin personajes conocidos")
+      pilotBox.append(textBox);
+      return pilotBox;
+    } else {
+      const pilotBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Personajes: ")
+      // console.log(link)
+      const pilotList = link.map(createPilotList);
+      pilotBox.append(textBox);
+      pilotBox.append(...pilotList);
+      return pilotBox;
+    }
+  }
+  function createSpeciesBox(link) {
+    if (link.length === 0) {
+      const speciesBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Especie: humano")
+      speciesBox.append(textBox);
+      return speciesBox;
+    } else {
+      const speciesBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Especie: ")
+      // console.log(link)
+      const speciesList = link.map(createSpeciesList);
+      speciesBox.append(textBox);
+      speciesBox.append(...speciesList);
+      return speciesBox;
+    }
+  }
+  function createResidentBox(link) {
+    if (link.length === 0) {
+      const pilotBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Sin Residentes conocidos")
+      pilotBox.append(textBox);
+      return pilotBox;
+    } else {
+      const pilotBox = createElement("div", "resident-box",)
+      const textBox = createElement("div", "li-box", "Residentes conocidos: ")
+      // console.log(link)
+      const pilotList = link.map(createPilotList);
+      pilotBox.append(textBox);
+      pilotBox.append(...pilotList);
+      return pilotBox;
+    }
+  }
   function createVehiclesBox(link) {
     if (link.length === 0) {
       const vehiclesBox = createElement("div", "item-box",)
@@ -71,6 +152,22 @@ function linkUrl(url) {
     if (link.length === 0) {
       const planetBox = createElement("div", "item-box",)
       const textBox = createElement("div", "item-box", "Planeta de origen desconocido")
+      planetBox.append(textBox);
+      return planetBox;
+    } else {
+      const planetBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Planeta de origen: ")
+      // console.log(link)
+      const planetList = createPlanetList(link);
+      planetBox.append(textBox);
+      planetBox.append(planetList);
+      return planetBox;
+    }
+  }
+  function createPlanet2Box(link) {
+    if (!link) {
+      const planetBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Fabricado")
       planetBox.append(textBox);
       return planetBox;
     } else {
@@ -118,6 +215,60 @@ function linkUrl(url) {
       })
   
     return film
+  }
+  function createPilotList(link) {
+    const pilot = createElement("div", "item-box",)
+    fetch(link, {
+      method: "GET",
+    })
+    .then((res) => {
+      return res.json();
+    }).then((name) => {
+      const pilotName = createElement("a", "link-box", name.name)
+      // console.log(name)
+        const pilotUrlLink = linkUrl(link);
+        const finalLink = linkPilot(pilotUrlLink)
+        pilotName.setAttribute("href", finalLink)
+        pilot.append(pilotName)
+      })
+  
+    return pilot
+  }
+  function createSpeciesList(link) {
+    const species = createElement("div", "item-box",)
+    fetch(link, {
+      method: "GET",
+    })
+    .then((res) => {
+      return res.json();
+    }).then((name) => {
+      const speciesName = createElement("a", "link-box", name.name)
+      // console.log(name)
+        const speciesUrlLink = linkUrl(link);
+        const finalLink = linkSpecies(speciesUrlLink)
+        speciesName.setAttribute("href", finalLink)
+        species.append(speciesName)
+      })
+  
+    return species
+  }
+  function createResidentList(link) {
+    const pilot = createElement("div", "resident-box",)
+    fetch(link, {
+      method: "GET",
+    })
+    .then((res) => {
+      return res.json();
+    }).then((name) => {
+      const pilotName = createElement("a", "link-box", name.name)
+      // console.log(name)
+        const pilotUrlLink = linkUrl(link);
+        const finalLink = linkPilot(pilotUrlLink)
+        pilotName.setAttribute("href", finalLink)
+        pilot.append(pilotName)
+      })
+  
+    return pilot
   }
   function createVehiclesList(link) {
     const vehicles = createElement("div", "item-box",)
