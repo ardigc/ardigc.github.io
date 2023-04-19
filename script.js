@@ -52,6 +52,38 @@ function linkUrl(url) {
       return shipBox;
     }
   }
+  function createShip2Box(link) {
+    if (link.length === 0) {
+      const shipBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Naves pilotadas: 0")
+      shipBox.append(textBox);
+      return shipBox;
+    } else {
+      const shipBox = createElement("div", "resident-box",)
+      const textBox = createElement("div", "li-box", "Naves que aparecen: ")
+      // console.log(link)
+      const shipList = link.map(createShipList);
+      shipBox.append(textBox);
+      shipBox.append(...shipList);
+      return shipBox;
+    }
+  }
+  function createVehicles2Box(link) {
+    if (link.length === 0) {
+      const shipBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Naves pilotadas: 0")
+      shipBox.append(textBox);
+      return shipBox;
+    } else {
+      const shipBox = createElement("div", "resident-box",)
+      const textBox = createElement("div", "li-box", "Vehiculos que aparecen: ")
+      // console.log(link)
+      const shipList = link.map(createShipList);
+      shipBox.append(textBox);
+      shipBox.append(...shipList);
+      return shipBox;
+    }
+  }
   function createFilmBox(link) {
     if (link.length === 0) {
       const filmBox = createElement("div", "item-box",)
@@ -109,6 +141,22 @@ function linkUrl(url) {
     } else {
       const speciesBox = createElement("div", "item-box",)
       const textBox = createElement("div", "item-box", "Especie: ")
+      // console.log(link)
+      const speciesList = link.map(createSpeciesList);
+      speciesBox.append(textBox);
+      speciesBox.append(...speciesList);
+      return speciesBox;
+    }
+  }
+  function createSpecies2Box(link) {
+    if (link.length === 0) {
+      const speciesBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Especie: humano")
+      speciesBox.append(textBox);
+      return speciesBox;
+    } else {
+      const speciesBox = createElement("div", "resident-box",)
+      const textBox = createElement("div", "li-box", "Especies que aparecen: ")
       // console.log(link)
       const speciesList = link.map(createSpeciesList);
       speciesBox.append(textBox);
@@ -177,6 +225,22 @@ function linkUrl(url) {
       const planetList = createPlanetList(link);
       planetBox.append(textBox);
       planetBox.append(planetList);
+      return planetBox;
+    }
+  }
+  function createPlanet3Box(link) {
+    if (!link) {
+      const planetBox = createElement("div", "item-box",)
+      const textBox = createElement("div", "item-box", "Fabricado")
+      planetBox.append(textBox);
+      return planetBox;
+    } else {
+      const planetBox = createElement("div", "resident-box",)
+      const textBox = createElement("div", "li-box", "Planetas que aparecen: ")
+      // console.log(link)
+      const planetList = link.map(createPlanetList);
+      planetBox.append(textBox);
+      planetBox.append(...planetList);
       return planetBox;
     }
   }

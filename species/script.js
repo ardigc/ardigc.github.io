@@ -13,7 +13,7 @@ if (!id === !null) {
     }).then((body) => {
       return body.results
       // }).catch((err) => {
-        // Error handling
+      // Error handling
     }).then((results) => {
       // console.log(results);
       const gridspecies = document.querySelector(".grid-species")
@@ -37,11 +37,21 @@ if (!id === !null) {
     console.log(specie);
     const specieBox = createElement("div", "specie-box",)
     const nameBox = createElement("div", "name-box", specie.name)
-    const heightBox = createElement("div", "item-box", "Altura media: "+specie.average_height+" cm")
-
+    const heightBox = createElement("div", "item-box", "Altura media: " + specie.average_height + " cm")
+    const lifeBox = createElement("div", "item-box", "Esperanza de vida: " + specie.average_lifespan + " años")
+    const classBox = createElement("div", "item-box", "Clasificacion: " + specie.classification)
+    const eyeBox = createElement("div", "item-box", "Color de ojos: " + specie.eye_colors)
+    const hairBox = createElement("div", "item-box", "Color de pelo: " + specie.hair_colors)
+    const skinBox = createElement("div", "item-box", "Color de piel: " + specie.skin_colors)
+    const langBox = createElement("div", "item-box", "Idioma: " + specie.language)
     specieBox.append(nameBox);
     specieBox.append(heightBox);
-
+    specieBox.append(lifeBox);
+    specieBox.append(classBox);
+    specieBox.append(eyeBox);
+    specieBox.append(hairBox);
+    specieBox.append(skinBox);
+    specieBox.append(langBox);
     const ident = specie.url;
     var regex = /(\d+)/g;
     const ide = ident.match(regex);
@@ -67,13 +77,25 @@ if (!id === !null) {
       function createspecie(specie) {
         const specieBox = createElement("div", "specie-box-big",)
         const nameBox = createElement("div", "name-box", specie.name)
-     
+        const heightBox = createElement("div", "item-box", "Altura media: " + specie.average_height + " cm")
+        const lifeBox = createElement("div", "item-box", "Esperanza de vida: " + specie.average_lifespan + " años")
+        const classBox = createElement("div", "item-box", "Clasificacion: " + specie.classification)
+        const eyeBox = createElement("div", "item-box", "Color de ojos: " + specie.eye_colors)
+        const hairBox = createElement("div", "item-box", "Color de pelo: " + specie.hair_colors)
+        const skinBox = createElement("div", "item-box", "Color de piel: " + specie.skin_colors)
+        const langBox = createElement("div", "item-box", "Idioma: " + specie.language)
         const filmBox = createFilmBox(specie.films);
-        // const vehiclesBox = createVehiclesBox(specie.vehicles);
         const planetBox = createPlanet2Box(specie.homeworld);
         const peopleBox = createPeopleBox(specie.people);
+        // const vehiclesBox = createVehiclesBox(specie.vehicles);
         specieBox.append(nameBox);
-        
+        specieBox.append(heightBox);
+        specieBox.append(lifeBox);
+        specieBox.append(classBox);
+        specieBox.append(eyeBox);
+        specieBox.append(hairBox);
+        specieBox.append(skinBox);
+        specieBox.append(langBox);
         specieBox.append(filmBox);
         // specieBox.append(vehiclesBox);
         specieBox.append(planetBox);;
