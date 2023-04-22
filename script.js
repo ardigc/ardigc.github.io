@@ -78,7 +78,7 @@ function createVehicles2Box(link) {
     const shipBox = createElement("div", "resident-box");
     const textBox = createElement("div", "li-box", "Vehiculos que aparecen: ");
     // console.log(link)
-    const shipList = link.map(createShipList);
+    const shipList = link.map(createVehiclesList);
     shipBox.append(textBox);
     shipBox.append(...shipList);
     return shipBox;
